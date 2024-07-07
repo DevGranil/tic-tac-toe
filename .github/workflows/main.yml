@@ -22,7 +22,8 @@ jobs:
       run: npm install && npm run build:prod
 
     - name: Deploy to Github Pages
-      uses: JamesIves/github-pages-deploy-action@releases/v2
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
+        BASE_BRANCH: main
         BRANCH: prod
         FOLDER: tic-tac-toe-app/dist/browser
