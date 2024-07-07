@@ -24,7 +24,6 @@ jobs:
     - name: Deploy to Github Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}
-        BASE_BRANCH: main
+        repo_token: ${{ secrets.GH_TOKEN }}
         BRANCH: prod
         FOLDER: tic-tac-toe-app/dist/browser
