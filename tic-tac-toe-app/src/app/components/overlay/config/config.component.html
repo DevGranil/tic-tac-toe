@@ -1,0 +1,16 @@
+
+<form [formGroup]="configForm" (ngSubmit)="onSubmit()">
+    <h1>Players</h1>
+    <div>
+        <label for="player1">Player 1 Name</label>
+        <input type="text" id="player1" name="player1" formControlName="player1">
+    </div>
+    <div>
+        <label for="player2">Player 2 Name</label>
+        <input type="text" id="player2" name="player2" formControlName="player2">
+    </div>
+    <div>
+        <!-- <button type="submit" (click)="onSubmit()" >Let's Go!</button> -->
+        <button type="submit" [disabled]="!configForm.valid">Let's Go!</button>
+    </div>
+</form>
