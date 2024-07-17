@@ -1,11 +1,8 @@
-<div class="grid">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-</div>
+
+@if((gridData$ | async); as gridState) {
+    <div class="grid">
+        @for(i of gridState | keyvalue; track i.value ){
+            <div [id]="i.key" (click)="selectBox()">{{i.value}}</div>
+        }
+    </div>
+}
