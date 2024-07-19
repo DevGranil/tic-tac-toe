@@ -1,8 +1,9 @@
-import { createReducer } from "@ngrx/store";
+import { createReducer, on } from "@ngrx/store";
+import { gridReset, gridUpdate } from "./grid.actions";
 
-export type gridAttr = Record<string, null | 'RED' | 'BLACK'>
+export type GridAttr = Record<string, null | 'RED' | 'BLACK'>
 
-const initial: gridAttr = {
+const state: GridAttr = {
     '00': null,
     '01': null,
     '02': null,
@@ -14,4 +15,17 @@ const initial: gridAttr = {
     '22': null
 }
 
-export const gridReducer = createReducer(initial);
+export const gridReducer = createReducer(
+    state,
+    on(gridUpdate, (state, action) => {
+        const hash = Object.keys(action.payload)[0]
+        const newState = {...state};
+        newState[hash] = Object.values(action.payload)[0]
+        return newState 
+    }),
+    on(gridReset, (state) => {
+        const newState = {...state};
+        Object.keys(newState).map(key => newState[key] = null)
+        return newState
+    })
+);

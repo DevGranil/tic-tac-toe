@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { gridAttr } from '../../store/grid.reducer';
+import { GridAttr } from '../../store/grid.reducer';
 import { AsyncPipe, KeyValuePipe } from '@angular/common';
+import { gridReset, gridUpdate } from '../../store/grid.actions';
+import { selectGrid } from '../../store/grid.selectors';
 
 @Component({
   selector: 'app-grid',
@@ -12,13 +14,24 @@ import { AsyncPipe, KeyValuePipe } from '@angular/common';
   styleUrl: './grid.component.scss'
 })
 export class GridComponent {
-  gridData$: Observable<gridAttr[]>;
+  gridData$: Observable<GridAttr> = this.store.select(selectGrid)
+  activePlayer: 'RED' | 'BLACK' = 'RED'
 
-  constructor(private store: Store<{gridState: gridAttr[]}>){
-    this.gridData$ = this.store.select('gridState')
+  constructor(private store: Store<{gridState: GridAttr}>){
+
+    this.gridData$.subscribe(data => {
+      console.log(data)
+    })
+   }
+
+  selectBox(hash: string){
+    this.store.dispatch(gridUpdate({payload: {[hash]: this.activePlayer}}))
+    this.activePlayer = this.activePlayer === 'RED' ?  'BLACK' : 'RED'
   }
 
-  selectBox(){
+  reset(){
+    this.store.dispatch(gridReset({payload: null}))
+    this.activePlayer = 'RED';
   }
 
 }
