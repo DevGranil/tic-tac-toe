@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { GridAttr } from '../../store/grid.reducer';
+import { filter, map, Observable, pluck, tap } from 'rxjs';
+import { GridAttr } from '../../store/grid/grid.reducer';
 import { AsyncPipe, KeyValuePipe } from '@angular/common';
-import { gridReset, gridUpdate } from '../../store/grid.actions';
-import { selectGrid } from '../../store/grid.selectors';
+import { gridReset, gridUpdate } from '../../store/grid/grid.actions';
+import { selectGrid } from '../../store/grid/grid.selectors';
 
 @Component({
   selector: 'app-grid',
@@ -13,16 +13,17 @@ import { selectGrid } from '../../store/grid.selectors';
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss'
 })
-export class GridComponent {
+export class GridComponent implements OnInit {
   gridData$: Observable<GridAttr> = this.store.select(selectGrid)
   activePlayer: 'RED' | 'BLACK' = 'RED'
 
-  constructor(private store: Store<{gridState: GridAttr}>){
+  constructor(private store: Store<{gridState: GridAttr}>){}
 
-    this.gridData$.subscribe(data => {
-      console.log(data)
-    })
-   }
+  ngOnInit(): void {
+    // this.store.select(selectGrid).pipe(
+    //   map(state => state['winner'])
+    // ).subscribe(winner => )
+  }
 
   selectBox(hash: string){
     this.store.dispatch(gridUpdate({payload: {[hash]: this.activePlayer}}))
@@ -30,7 +31,7 @@ export class GridComponent {
   }
 
   reset(){
-    this.store.dispatch(gridReset({payload: null}))
+    this.store.dispatch(gridReset())
     this.activePlayer = 'RED';
   }
 

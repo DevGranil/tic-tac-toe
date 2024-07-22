@@ -2,7 +2,9 @@
 @if((gridData$ | async); as gridState) {
     <div class="grid">
         @for(i of gridState | keyvalue; track i.value ){
-            <div [id]="i.key" (click)="selectBox(i.key)">{{i.value}}</div>
+            @if(i.key !== 'winner'){
+                <div [id]="i.key" (click)="selectBox(i.key)">{{i.value}}</div>
+            }
         }
     </div>
 }
