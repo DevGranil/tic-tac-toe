@@ -20,8 +20,5 @@ export class GamePanelComponent {
 
   constructor(private store: Store<{[Keys.PLAYER_KEY]: PlayerState}>){
 
-    // this.playerOne$.subscribe(data => {
-    //   debugger
-    // })
   }
 }

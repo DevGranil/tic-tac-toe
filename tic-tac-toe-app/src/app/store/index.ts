@@ -7,7 +7,8 @@ export enum GridActions {
 
 export enum PlayerActions{
     PLAYER_WINNER = '[Players] setWinner',
-    PLAYER_UPDATE = '[Players] update'
+    PLAYER_UPDATE = '[Players] update',
+    PLAYER_ACTIVE = '[Players] active'
 }
 
 export enum Keys{

@@ -20,6 +20,6 @@ export const appConfig: ApplicationConfig = {
     }),
     // provideState('grid', gridReducer ),
     // provideState('players', playersReducer),
-    // provideEffects([GridEffects])
+    provideEffects([GridEffects])
   ]
 };
