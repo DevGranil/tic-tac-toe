@@ -1,5 +1,5 @@
 import { GridAttr } from "./grid.reducer";
-import { GridSelectors } from ".."
+import { Selectors } from ".."
 
-export const selectGrid = (state: { [GridSelectors.GRID_STATE]: GridAttr}) => state[GridSelectors.GRID_STATE]
+export const selectGrid = (state: { [Selectors.GRID_STATE]: GridAttr}) => state[Selectors.GRID_STATE]
 

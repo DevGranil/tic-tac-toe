@@ -2,17 +2,24 @@ import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideStore } from '@ngrx/store';
-import { gridReducer } from './store/grid/grid.reducer';
-import { GridSelectors } from './store';
+import { provideState, provideStore } from '@ngrx/store';
+import { Selectors } from './store';
 import { provideEffects } from '@ngrx/effects';
+// import { GridEffects } from './store/grid/grid.effects';
+import { reducer as gridReducer} from "./store/grid/grid.reducer";
+import { reducer as playersReducer} from "./store/players/players.reducer";
 import { GridEffects } from './store/grid/grid.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideStore(
-      {[GridSelectors.GRID_STATE]: gridReducer},
-    ), 
-    provideEffects([GridEffects])]
+      {
+      [Selectors.GRID_STATE]: gridReducer, 
+      [Selectors.PLAYER_STATE]: playersReducer
+    }),
+    // provideState('grid', gridReducer ),
+    // provideState('players', playersReducer),
+    provideEffects([GridEffects])
+  ]
 };

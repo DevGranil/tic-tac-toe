@@ -12,11 +12,10 @@ const state: GridAttr = {
     '12': null,
     '20': null,
     '21': null,
-    '22': null,
-    'winner': 'sime'
+    '22': null
 }
 
-export const gridReducer = createReducer(
+export const reducer = createReducer(
     state,
     on(gridUpdate, (state, action) => {
         const hash = Object.keys(action.payload)[0]

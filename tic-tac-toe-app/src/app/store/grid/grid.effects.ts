@@ -1,11 +1,12 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { gridUpdate } from "./grid.actions";
-import { tap, withLatestFrom } from "rxjs";
-import { GridActions, GridSelectors } from "..";
+import { map, of, switchMap, tap, withLatestFrom } from "rxjs";
+import { GridActions, Selectors } from "..";
 import { Store } from "@ngrx/store";
 import { selectGrid } from "./grid.selectors";
 import { Injectable } from "@angular/core";
 import { GridAttr } from "./grid.reducer";
+import { setWinner } from "../players/players.actions";
 
 @Injectable()
 export class GridEffects{
@@ -13,11 +14,11 @@ export class GridEffects{
          this.actions$.pipe(
             ofType(gridUpdate),
             withLatestFrom(this.store.select(selectGrid)),
-            tap((action) => {
-                debugger
-            })
-            
-    ), {dispatch: false})
+            map((action) => {
+                /// calculate winner here 
+                return setWinner({payload: {'winner': 'test'}})
+            })     
+    ))
 
-    constructor(private actions$: Actions, private store: Store<{[GridSelectors.GRID_STATE]: GridAttr}>){}
+    constructor(private actions$: Actions, private store: Store<{[Selectors.GRID_STATE]: GridAttr}>){}
 }
