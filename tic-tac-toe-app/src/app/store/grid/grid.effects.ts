@@ -1,7 +1,7 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { gridUpdate } from "./grid.actions";
 import { map, of, switchMap, tap, withLatestFrom } from "rxjs";
-import { GridActions, Selectors } from "..";
+import { GridActions, Keys } from "..";
 import { Store } from "@ngrx/store";
 import { selectGrid } from "./grid.selectors";
 import { Injectable } from "@angular/core";
@@ -20,5 +20,5 @@ export class GridEffects{
             })     
     ))
 
-    constructor(private actions$: Actions, private store: Store<{[Selectors.GRID_STATE]: GridAttr}>){}
+    constructor(private actions$: Actions, private store: Store<{[Keys.GRID_KEY]: GridAttr}>){}
 }

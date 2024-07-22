@@ -1,16 +1,25 @@
 import { createReducer, on } from "@ngrx/store";
-import { setWinner } from "./players.actions";
+import { setWinner, updatePlayers } from "./players.actions";
 
-const state : {winner: string | null} = {
-    winner: null
+export interface PlayersConfig{
+    player_one: string,
+    player_two: string,
+    active: PlayersConfig['player_one'] | PlayersConfig['player_two']
+    winner? : string,
 }
 
+export type PlayerState = PlayersConfig | null
 
-export const reducer = createReducer(
+const state: PlayersConfig | null = null
+
+export const reducer = createReducer<PlayerState>(
     state,
     on(setWinner, (state, action) => {
-        debugger
-        return action.payload
+        return null
     }),
+    on(updatePlayers, (state, { payload }) => {
+        if(payload) state = payload.players
+        return state
+    })
 
 );

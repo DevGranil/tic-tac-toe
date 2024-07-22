@@ -5,25 +5,12 @@ export enum GridActions {
     GRID_WINNER = '[Grid] Winner'
 }
 
-// export enum GridSelectors{
-//     GRID_STATE = 'gridState'
-// }
-
-
 export enum PlayerActions{
-    WINNER = 'winner'
+    PLAYER_WINNER = '[Players] setWinner',
+    PLAYER_UPDATE = '[Players] update'
 }
 
-export enum Selectors{
-    GRID_STATE = 'gridState',
-    PLAYER_STATE = 'playersState'
+export enum Keys{
+    GRID_KEY = 'gridKey',
+    PLAYER_KEY = 'playersKey'
 }
-
-// const reducers = {
-//     board: fromBoard.reducer,
-//     winning: fromWinning.reducer,
-//   };
-
-
-// export reducer
-

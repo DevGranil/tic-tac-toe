@@ -1,6 +1,8 @@
 import { Component, OnInit, computed, effect } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PlayersService } from '../../../services/players.service';
+import { Store } from '@ngrx/store';
+import { PlayerState } from '../../../store/players/players.reducer';
+import { updatePlayers } from '../../../store/players/players.actions';
 
 @Component({
   selector: 'app-config',
@@ -12,16 +14,23 @@ import { PlayersService } from '../../../services/players.service';
   styleUrl: './config.component.scss'
 })
 export class ConfigComponent implements OnInit{
-  configForm: FormGroup = this.playerService.players()
+  configForm: FormGroup = this.fb.group({
+    player_one: ['', Validators.required],
+    player_two: ['', Validators.required]
+  })
 
-  constructor(private fb: FormBuilder, private playerService: PlayersService){}
+  constructor(private fb: FormBuilder, private store: Store<{playersState: PlayerState}>){}
 
   ngOnInit(): void {
-    this.playerService.players()
+    // this.playerService.players()
   }
 
 
   onSubmit(){
-    this.playerService.done()
+    this.store.dispatch(updatePlayers({
+      payload: {
+        players: {...this.configForm.value, active: this.configForm.controls['player_one'].value}
+      }
+    }))
   }
 }

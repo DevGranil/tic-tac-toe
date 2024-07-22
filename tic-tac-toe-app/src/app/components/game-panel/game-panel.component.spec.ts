@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActionsComponent } from './actions.component';
+import { GamePanelComponent } from './game-panel.component';
 
-describe('ActionsComponent', () => {
-  let component: ActionsComponent;
-  let fixture: ComponentFixture<ActionsComponent>;
+describe('GamePanelComponent', () => {
+  let component: GamePanelComponent;
+  let fixture: ComponentFixture<GamePanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ActionsComponent]
+      imports: [GamePanelComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ActionsComponent);
+    fixture = TestBed.createComponent(GamePanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

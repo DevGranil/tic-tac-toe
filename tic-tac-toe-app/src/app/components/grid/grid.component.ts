@@ -5,6 +5,7 @@ import { GridAttr } from '../../store/grid/grid.reducer';
 import { AsyncPipe, KeyValuePipe } from '@angular/common';
 import { gridReset, gridUpdate } from '../../store/grid/grid.actions';
 import { selectGrid } from '../../store/grid/grid.selectors';
+import { Keys } from '../../store';
 
 @Component({
   selector: 'app-grid',
@@ -17,7 +18,7 @@ export class GridComponent implements OnInit {
   gridData$: Observable<GridAttr> = this.store.select(selectGrid)
   activePlayer: 'RED' | 'BLACK' = 'RED'
 
-  constructor(private store: Store<{gridState: GridAttr}>){}
+  constructor(private store: Store<{[Keys.GRID_KEY]: GridAttr}>){}
 
   ngOnInit(): void {
     // this.store.select(selectGrid).pipe(
