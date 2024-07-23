@@ -6,7 +6,7 @@ export interface PlayersConfig{
     player_two: string,
     active: PlayersConfig['player_one'] | PlayersConfig['player_two']
     winner? : string,
-    scores? : {[key:string]: number}
+    scores : {[key:string]: number}
 }
 
 export type PlayerState = PlayersConfig | null
