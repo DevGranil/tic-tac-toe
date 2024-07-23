@@ -29,7 +29,15 @@ export class ConfigComponent implements OnInit{
   onSubmit(){
     this.store.dispatch(updatePlayers({
       payload: {
-        players: {...this.configForm.value, active: this.configForm.controls['player_one'].value}
+        players: {
+          player_one: this.configForm.controls['player_one'].value,
+          player_two: this.configForm.controls['player_two'].value,
+          active: this.configForm.controls['player_one'].value,
+          scores: {
+            [this.configForm.controls['player_one'].value]: 0,
+            [this.configForm.controls['player_two'].value]: 0,
+          }
+        }
       }
     }))
   }

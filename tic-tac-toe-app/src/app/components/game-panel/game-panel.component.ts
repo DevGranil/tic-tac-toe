@@ -5,20 +5,21 @@ import { PlayersConfig, PlayerState } from '../../store/players/players.reducer'
 import { selectGamesPanel, selectPlayers } from '../../store/players/players.selectors';
 import { Keys } from '../../store';
 import { ActivePlayerComponent } from './active-player/active-player.component';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, KeyValuePipe } from '@angular/common';
 
 @Component({
   selector: 'app-game-panel',
   standalone: true,
   imports: [
     ActivePlayerComponent,
-    AsyncPipe
+    AsyncPipe,
+    KeyValuePipe
   ],
   templateUrl: './game-panel.component.html',
   styleUrl: './game-panel.component.scss'
 })
 export class GamePanelComponent {
-  scores$: Observable<PlayersConfig['scores'] | null> = this.store.select(selectGamesPanel);
+  scores$: Observable<PlayersConfig['scores'] | undefined> = this.store.select(selectGamesPanel);
 
   constructor(private store: Store<{[Keys.PLAYER_KEY]: PlayerState}>){
 

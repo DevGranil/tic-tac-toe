@@ -1,10 +1,18 @@
 
-<section class="panel">
+<div class="panel">
     <!-- <app-active-player></app-active-player>
     <div class="panel__actions">
         <button>Restart</button>
     </div> -->
-    @if((scores$ | async); as scores){
-        <div>{{scores}}</div>
-    }
-</section>
+    <section class="panel__scoreboard">
+        <h2>Leaderboard</h2>
+        @if((scores$ | async); as scores){
+            @for(i of scores | keyvalue; track i.value ){
+                <div class="panel__scores">
+                    <span>{{i.key}}</span>
+                    <span>{{i.value}}</span>
+                </div>
+            }
+        }
+    </section>
+</div>
