@@ -2,6 +2,9 @@
   @if(!(playersData$ | async)){
     <app-overlay></app-overlay>
   }
-  <app-grid></app-grid>
-  <app-game-panel></app-game-panel>
+  <div >
+      <app-game-panel></app-game-panel>
+      <app-grid></app-grid>  
+  </div>
+  <!-- <app-game-panel></app-game-panel> -->
 </main>

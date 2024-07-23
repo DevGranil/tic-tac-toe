@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { Keys } from './store';
 import { selectPlayersState } from './store/players/players.selectors';
+import { ActivePlayerComponent } from './components/game-panel/active-player/active-player.component';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ import { selectPlayersState } from './store/players/players.selectors';
     GridComponent,
     OverlayComponent,
     GamePanelComponent,
-    AsyncPipe
+    AsyncPipe,
+    ActivePlayerComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
