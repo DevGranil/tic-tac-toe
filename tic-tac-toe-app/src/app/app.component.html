@@ -1,3 +1,9 @@
+
+@if((winner$ | async); as winner){
+  <app-winner [winner]="winner"></app-winner>
+}
+
+
 <main>
   @if(!(playersData$ | async)){
     <app-overlay></app-overlay>

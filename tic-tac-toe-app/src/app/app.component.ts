@@ -6,12 +6,13 @@ import { PlayersService } from './services/players.service';
 import { FormGroup } from '@angular/forms';
 import { GamePanelComponent } from './components/game-panel/game-panel.component';
 import { Store } from '@ngrx/store';
-import { PlayerState } from './store/players/players.reducer';
+import { PlayersConfig, PlayerState } from './store/players/players.reducer';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { Keys } from './store';
-import { selectPlayersState } from './store/players/players.selectors';
+import { selectPlayersState, selectWinner } from './store/players/players.selectors';
 import { ActivePlayerComponent } from './components/game-panel/active-player/active-player.component';
+import { WinnerComponent } from './components/winner/winner.component';
 
 @Component({
   selector: 'app-root',
@@ -22,13 +23,15 @@ import { ActivePlayerComponent } from './components/game-panel/active-player/act
     OverlayComponent,
     GamePanelComponent,
     AsyncPipe,
-    ActivePlayerComponent
+    ActivePlayerComponent,
+    WinnerComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   playersData$: Observable<PlayerState> = this.store.select(selectPlayersState)
+  winner$: Observable<PlayersConfig['winner']> = this.store.select(selectWinner)
 
   constructor(private store: Store<{[Keys.PLAYER_KEY]: PlayerState}>){
   }

@@ -17,12 +17,16 @@ export class GridEffects{
             ofType(gridUpdate),
             withLatestFrom(this.store.select(selectGrid)),
             withLatestFrom(this.store.select(selectPlayers)),
-            map((action) => {
+            map((res) => {
+                const { payload } = res[0][0]
+                const grid = res[0][1]
+                const winner = this.getWinner(payload, grid);
+                if(winner) return setWinner({payload: {winner: winner}})
 
                 /// calculate winner here.. if no winner switch active
                 // return setWinner({payload: {'winner': 'test'}})
-                const activePlayer = Object.values(action[0][0].payload)[0]
-                const players = action[1];
+                const activePlayer = Object.values(res[0][0].payload)[0]
+                const players = res[1];
                 const switchActive = players.find(player => player !== activePlayer)
                 // const switchToActive
                 /// No one has one yet so update active
@@ -34,4 +38,22 @@ export class GridEffects{
     ))
 
     constructor(private actions$: Actions, private store: Store<{[Keys.GRID_KEY]: GridAttr, [Keys.PLAYER_KEY]: PlayerState}>){}
+
+
+    private getWinner(payload: GridAttr, grid: GridAttr): false | string{
+        const triggeredValue = Object.values(payload)[0]
+
+        if(triggeredValue === null) return false
+
+        if(grid['00'] === triggeredValue &&  grid['01'] === triggeredValue && grid['02'] === triggeredValue) return triggeredValue;
+        if(grid['10'] === triggeredValue &&  grid['11'] === triggeredValue && grid['12'] === triggeredValue) return triggeredValue;
+        if(grid['20'] === triggeredValue &&  grid['21'] === triggeredValue && grid['22'] === triggeredValue) return triggeredValue;
+        if(grid['00'] === triggeredValue &&  grid['10'] === triggeredValue && grid['20'] === triggeredValue) return triggeredValue;
+        if(grid['10'] === triggeredValue &&  grid['11'] === triggeredValue && grid['12'] === triggeredValue) return triggeredValue;
+        if(grid['20'] === triggeredValue &&  grid['21'] === triggeredValue && grid['22'] === triggeredValue) return triggeredValue;
+        if(grid['00'] === triggeredValue &&  grid['11'] === triggeredValue && grid['22'] === triggeredValue) return triggeredValue;
+        if(grid['20'] === triggeredValue &&  grid['11'] === triggeredValue && grid['02'] === triggeredValue) return triggeredValue;
+
+        return false
+    }
 }

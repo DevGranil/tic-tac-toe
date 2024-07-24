@@ -6,7 +6,7 @@ export interface PlayersConfig{
     player_two: string,
     active: PlayersConfig['player_one'] | PlayersConfig['player_two']
     winner? : string,
-    scores : {[key:string]: number}
+    scores: {[key:string]: number}
 }
 
 export type PlayerState = PlayersConfig | null
@@ -15,20 +15,24 @@ const state: PlayersConfig | null = null
 
 export const reducer = createReducer<PlayerState>(
     state,
-    on(setWinner, (state, action) => {
-        return null
+    on(setWinner, (state, { payload }) => {
+        if(!state) return state;
+
+        let scoreOb = {...state.scores}
+        let newScore = scoreOb[payload.winner] + 1
+        let newState = {...state, winner : payload.winner, scores: { ...scoreOb, [payload.winner]: newScore } }
+        return newState
     }),
     on(updatePlayers, (state, { payload }) => {
         state = payload.players
         return state
     }),
     on(updateActive, (state, { payload }) => {
-        if(state) {
-            let newState = {...state, active: payload}
-            return newState
-        } else {
-            return state
-        }
+        if(!state) return state
+
+        let newState = {...state, active: payload}
+        return newState
+    
     })
 
 );
