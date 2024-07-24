@@ -45,12 +45,17 @@ export class GridEffects{
 
         if(triggeredValue === null) return false
 
+        ///horizontal
         if(grid['00'] === triggeredValue &&  grid['01'] === triggeredValue && grid['02'] === triggeredValue) return triggeredValue;
         if(grid['10'] === triggeredValue &&  grid['11'] === triggeredValue && grid['12'] === triggeredValue) return triggeredValue;
         if(grid['20'] === triggeredValue &&  grid['21'] === triggeredValue && grid['22'] === triggeredValue) return triggeredValue;
+
+        // vertical
         if(grid['00'] === triggeredValue &&  grid['10'] === triggeredValue && grid['20'] === triggeredValue) return triggeredValue;
-        if(grid['10'] === triggeredValue &&  grid['11'] === triggeredValue && grid['12'] === triggeredValue) return triggeredValue;
-        if(grid['20'] === triggeredValue &&  grid['21'] === triggeredValue && grid['22'] === triggeredValue) return triggeredValue;
+        if(grid['01'] === triggeredValue &&  grid['11'] === triggeredValue && grid['21'] === triggeredValue) return triggeredValue;
+        if(grid['02'] === triggeredValue &&  grid['12'] === triggeredValue && grid['22'] === triggeredValue) return triggeredValue;
+
+        // diagonal
         if(grid['00'] === triggeredValue &&  grid['11'] === triggeredValue && grid['22'] === triggeredValue) return triggeredValue;
         if(grid['20'] === triggeredValue &&  grid['11'] === triggeredValue && grid['02'] === triggeredValue) return triggeredValue;
 

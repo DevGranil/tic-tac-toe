@@ -36,7 +36,7 @@ export const reducer = createReducer<PlayerState>(
     on(resetWinner, (state) => {
         if(!state) return state;
 
-        let newState = {...state, winner: undefined}
+        let newState = {...state, winner: undefined, active: state.player_one}
         return newState
     }),
     
