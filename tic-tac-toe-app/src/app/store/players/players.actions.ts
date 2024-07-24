@@ -16,3 +16,11 @@ export const updateActive = createAction(
     PlayerActions.PLAYER_ACTIVE,
     props<{payload: PlayersConfig['active']}>()
 )
+
+export const resetWinner = createAction(
+    PlayerActions.PLAYER_RESTART
+)
+
+export const endGame = createAction(
+    PlayerActions.PLAYER_END
+)

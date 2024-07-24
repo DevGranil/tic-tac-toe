@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { setWinner, updateActive, updatePlayers } from "./players.actions";
+import { resetWinner, setWinner, updateActive, updatePlayers } from "./players.actions";
 
 export interface PlayersConfig{
     player_one: string,
@@ -32,7 +32,13 @@ export const reducer = createReducer<PlayerState>(
 
         let newState = {...state, active: payload}
         return newState
+    }),
+    on(resetWinner, (state) => {
+        if(!state) return state;
+
+        let newState = {...state, winner: undefined}
+        return newState
+    }),
     
-    })
 
 );
