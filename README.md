@@ -6,6 +6,10 @@
 ### Description
 Simple tic tac toe game.
 
+Beat you're opponent and build your wins!!.
+
+To start enter the names for Player 1 and Player 2, then off you go.
+
 
 
 
