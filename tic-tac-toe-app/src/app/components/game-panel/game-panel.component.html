@@ -1,15 +1,27 @@
 
 <div class="panel">
-    <app-active-player></app-active-player>
     <section class="panel__scoreboard">
-        <h2>Leaderboard</h2>
-        @if((scores$ | async); as scores){
-            @for(i of scores | keyvalue; track i.value ){
-                <div class="panel__scores">
-                    <span>{{i.key}}</span>
-                    <span>{{i.value}}</span>
-                </div>
+        <div class="panel__scores">
+            <h4>Leaderboard</h4>
+            @if((scores$ | async); as scores){
+                    <table >
+                        <tr>
+                            <th></th>
+                            <th>Wins</th>
+                        </tr>
+                        <tBody>
+                            @for(i of scores | keyvalue; track i.value ){
+                                <tr>
+                                    <td>{{i.key}}</td>
+                                    <td>{{i.value}}</td>
+                                </tr>
+                            }
+                        </tBody>
+    
+                    </table>
+                
             }
-        }
+        </div>
     </section>
+    <app-active-player></app-active-player>
 </div>

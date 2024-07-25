@@ -3,14 +3,41 @@
     margin-bottom: 20px;
 
     &__scoreboard{
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: center;
     }
 
     &__scores{
         font-size: 24px;
-        span:first-child{
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+
+        h4{
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        th{
+            font-size: 1rem;
+        }
+
+        // td:first-child{
+        //     min-width: 30px;
+        //     img{
+        //         width: 20px;
+        //         height: 20px;
+        //         transform: rotate(90deg);
+        //     }
+        // }
+        td:nth-child(1){
             margin-right: 10px;
             display: inline-block;
             min-width: 70px;
+        }
+
+        td:nth-child(2){
+            text-align: center;
         }
     }
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { PlayersConfig, PlayerState } from '../../store/players/players.reducer';
-import { selectLeaderBoard, selectPlayers } from '../../store/players/players.selectors';
+import { selectActive, selectLeaderBoard, selectPlayers } from '../../store/players/players.selectors';
 import { Keys } from '../../store';
 import { ActivePlayerComponent } from './active-player/active-player.component';
 import { AsyncPipe, KeyValuePipe } from '@angular/common';
