@@ -11,7 +11,7 @@ Simple tic tac toe game.
 
 ### Built With
      - Angular v17
-     - ngrx v18
+     - ngrx v17
 
 
 View site -> https://devgranil.github.io/tic-tac-toe/
