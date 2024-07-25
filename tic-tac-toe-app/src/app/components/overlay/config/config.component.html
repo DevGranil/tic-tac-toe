@@ -9,6 +9,9 @@
         <label for="player2">Player 2</label>
         <input type="text" id="player2" name="player2" formControlName="player_two">
     </div>
+    @if(configForm.errors && configForm.errors['playerNames']){
+        <div class="error">{{ configForm.errors['playerNames']}}</div>
+    }
     <div>
         <button type="submit" [disabled]="!configForm.valid">Let's Go!</button>
     </div>

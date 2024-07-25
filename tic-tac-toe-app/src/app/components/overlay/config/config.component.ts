@@ -27,6 +27,12 @@ export class ConfigComponent implements OnInit{
 
 
   onSubmit(){
+    if(this.configForm.controls['player_one'].value === this.configForm.controls['player_two'].value){
+      debugger
+      this.configForm.setErrors({playerNames: 'Player names must be unique'})
+      return
+    }
+
     this.store.dispatch(updatePlayers({
       payload: {
         players: {
