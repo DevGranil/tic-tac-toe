@@ -6,9 +6,10 @@ h1{
 form{
     width: 300px;
     padding: 10px 30px;
-    background-color: rgb(242, 241, 241); 
+    // background: linear-gradient(to right, #1AE4EF, #D0DFF3);
     border-radius: 3px;
-    box-shadow: 0 0 5px rgb(181, 181, 181);
+    background-color: white;
+    box-shadow: 0 0 5px lightgrey;
     div{
         margin: 20px 0px;
         display: flex;
