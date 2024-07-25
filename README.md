@@ -4,7 +4,7 @@
 
 
 ### Description
-Simple tic tac toe game built to exercise my Angular skills. 
+Simple tic tac toe game.
 
 
 
