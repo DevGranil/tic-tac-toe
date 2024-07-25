@@ -5,7 +5,7 @@ import { PlayersConfig, PlayerState } from '../../store/players/players.reducer'
 import { Observable } from 'rxjs';
 import { selectWinner } from '../../store/players/players.selectors';
 import { GridAttr } from '../../store/grid/grid.reducer';
-import { resetWinner } from '../../store/players/players.actions';
+import { endGame, resetWinner } from '../../store/players/players.actions';
 import { gridReset } from '../../store/grid/grid.actions';
 import { Draw } from '../../store/grid/grid.effects';
 
@@ -27,5 +27,10 @@ export class WinnerComponent {
     this.store.dispatch(resetWinner())
     this.store.dispatch(gridReset())
 
+  }
+
+  end(){
+    this.store.dispatch(endGame())
+    this.store.dispatch(gridReset())
   }
 }
