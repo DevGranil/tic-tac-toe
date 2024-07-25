@@ -7,6 +7,7 @@ import { selectWinner } from '../../store/players/players.selectors';
 import { GridAttr } from '../../store/grid/grid.reducer';
 import { resetWinner } from '../../store/players/players.actions';
 import { gridReset } from '../../store/grid/grid.actions';
+import { Draw } from '../../store/grid/grid.effects';
 
 @Component({
   selector: 'app-winner',
@@ -17,6 +18,7 @@ import { gridReset } from '../../store/grid/grid.actions';
 })
 export class WinnerComponent {
   winner = input.required<string>()
+  draw = Draw.DRAW
 
   constructor(private store: Store<{[Keys.GRID_KEY]: GridAttr, [Keys.PLAYER_KEY]: PlayerState}>){
   }

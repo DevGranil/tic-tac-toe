@@ -10,6 +10,10 @@ import { setWinner, updateActive } from "../players/players.actions";
 import { PlayerState } from "../players/players.reducer";
 import { selectPlayers } from "../players/players.selectors";
 
+export enum Draw {
+    DRAW = 'draw'
+}
+
 @Injectable()
 export class GridEffects{
     calculateResult = createEffect(() =>
@@ -21,6 +25,7 @@ export class GridEffects{
                 const { payload } = res[0][0]
                 const grid = res[0][1]
                 const winner = this.getWinner(payload, grid);
+
                 if(winner) return setWinner({payload: {winner: winner}})
 
                 /// calculate winner here.. if no winner switch active
@@ -40,7 +45,7 @@ export class GridEffects{
     constructor(private actions$: Actions, private store: Store<{[Keys.GRID_KEY]: GridAttr, [Keys.PLAYER_KEY]: PlayerState}>){}
 
 
-    private getWinner(payload: GridAttr, grid: GridAttr): false | string{
+    private getWinner(payload: GridAttr, grid: GridAttr): false | string | Draw.DRAW{
         const triggeredValue = Object.values(payload)[0]
 
         if(triggeredValue === null) return false
@@ -58,6 +63,11 @@ export class GridEffects{
         // diagonal
         if(grid['00'] === triggeredValue &&  grid['11'] === triggeredValue && grid['22'] === triggeredValue) return triggeredValue;
         if(grid['20'] === triggeredValue &&  grid['11'] === triggeredValue && grid['02'] === triggeredValue) return triggeredValue;
+
+        // check for draw
+
+        const gridValues = Object.values(grid)
+        if(gridValues.filter(val => val === null).length === 0) return Draw.DRAW
 
         return false
     }

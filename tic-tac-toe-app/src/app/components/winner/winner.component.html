@@ -1,11 +1,14 @@
 
 <div class="winner">
     <div class="winner__wrapper">
-        <h3 class="winner__text">Winner</h3>
-        <h1 class="winner__text">
-            {{winner()}} 
-        </h1>
-
+        @if(winner() === draw ){
+            <h3 class="winner__text">Draw</h3>
+        } @else {
+            <h3 class="winner__text">Winner</h3>
+            <h1 class="winner__text">
+                {{winner()}} 
+            </h1>
+        }
         <div class="winner__actions">
             <button id="restart" (click)="restart()">RESTART</button>
             <button id="exit">EXIT</button>
