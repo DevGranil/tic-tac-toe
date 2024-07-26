@@ -18,10 +18,22 @@ body{
     font-family: "Luckiest Guy", cursive;
     font-weight: 400;
     font-style: normal;
+    overflow: hidden;
 }
 
 button{
     font-family: "Luckiest Guy", cursive;
     cursor: pointer;
     color: black;
+}
+
+input {
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+}
+input[type=text], input[type=button], input[type=submit] {   
+    background-color : #D3D3D3;    
 }

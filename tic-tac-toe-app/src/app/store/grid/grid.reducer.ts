@@ -17,10 +17,10 @@ const state: GridAttr = {
 
 export const reducer = createReducer(
     state,
-    on(gridUpdate, (state, action) => {
-        const hash = Object.keys(action.payload)[0]
+    on(gridUpdate, (state, { payload }) => {
+        const hash = Object.keys(payload)[0]
         const newState = {...state};
-        newState[hash] = Object.values(action.payload)[0]
+        newState[hash] = Object.values(payload)[0]
         return newState 
     }),
     on(gridReset, (state) => {

@@ -1,5 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { endGame, resetWinner, setWinner, updateActive, updatePlayers } from "./players.actions";
+import { Draw } from "../grid/grid.effects";
 
 export interface PlayersConfig{
     player_one: string,
@@ -11,7 +12,7 @@ export interface PlayersConfig{
 
 export type PlayerState = PlayersConfig | null
 
-const state: PlayersConfig | null = null
+const state: PlayerState = null
 
 export const reducer = createReducer<PlayerState>(
     state,
@@ -20,7 +21,7 @@ export const reducer = createReducer<PlayerState>(
 
         let scoreOb = {...state.scores}
         let newScore = scoreOb[payload.winner] + 1
-        let newState = {...state, winner : payload.winner, scores: { ...scoreOb, [payload.winner]: newScore } }
+        let newState = payload.winner !== Draw.DRAW ? {...state, winner : payload.winner, scores: { ...scoreOb, [payload.winner]: newScore } } : {...state, winner : payload.winner} 
         return newState
     }),
     on(updatePlayers, (state, { payload }) => {
