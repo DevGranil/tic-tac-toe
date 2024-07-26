@@ -16,6 +16,9 @@ jobs:
       uses: actions/setup-node@v4
       with: 
         node-version: 20
+    
+    - name: Run Tests
+      run: npm run test
 
     - name: Build Angular app to prod
       working-directory: ./tic-tac-toe-app

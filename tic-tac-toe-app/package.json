@@ -8,6 +8,7 @@
     "build:prod": "ng build --configuration=production --base-href=/tic-tac-toe/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test-headless": "ng test --sourceMap=false --browsers=ChromeHeadless --watch=false",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix=true"
   },
