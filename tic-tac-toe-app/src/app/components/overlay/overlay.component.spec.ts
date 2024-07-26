@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OverlayComponent } from './overlay.component';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('OverlayComponent', () => {
     let component: OverlayComponent;
@@ -8,7 +9,8 @@ describe('OverlayComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [OverlayComponent]
+            imports: [OverlayComponent],
+            providers: [provideMockStore({})]
         })
             .compileComponents();
     

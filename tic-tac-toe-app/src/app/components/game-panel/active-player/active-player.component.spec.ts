@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActivePlayerComponent } from './active-player.component';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
 
 describe('ActivePlayerComponent', () => {
     let component: ActivePlayerComponent;
@@ -8,7 +9,10 @@ describe('ActivePlayerComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [ActivePlayerComponent]
+            imports: [ActivePlayerComponent],
+            providers: [
+                provideMockStore({})
+            ]
         })
             .compileComponents();
     

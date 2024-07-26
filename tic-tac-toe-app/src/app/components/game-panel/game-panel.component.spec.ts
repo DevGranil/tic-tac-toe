@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GamePanelComponent } from './game-panel.component';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('GamePanelComponent', () => {
     let component: GamePanelComponent;
@@ -8,7 +9,10 @@ describe('GamePanelComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [GamePanelComponent]
+            imports: [GamePanelComponent],
+            providers: [
+                provideMockStore({})      
+            ]
         })
             .compileComponents();
     

@@ -7,10 +7,11 @@
 <main>
   @if(!(playersData$ | async)){
     <app-overlay></app-overlay>
-  }
-  <div >
+  } @else {
+    <div >
       <app-game-panel></app-game-panel>
       <app-grid></app-grid>  
   </div>
-  <!-- <app-game-panel></app-game-panel> -->
+  }
+
 </main>
