@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="281px" height="281px" viewBox="0 0 281 281" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>favicon</title>
+    <defs>
+        <linearGradient x1="1.81412497%" y1="101.214131%" x2="98.185875%" y2="-1.21413094%" id="linearGradient-1">
+            <stop stop-color="#1AE4EF" offset="0%"></stop>
+            <stop stop-color="#D0DFF3" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="banner" transform="translate(-944.000000, -364.000000)">
+            <g id="favicon" transform="translate(944.000000, 364.000000)">
+                <rect id="Rectangle" x="0" y="0" width="281" height="281"></rect>
+                <g id="blob-(3)" transform="translate(24.224138, 22.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+                    <path d="M186.863408,22.0606526 C210.383314,35.663023 230.748111,59.3193194 232.46908,83.8627269 C233.903221,108.406134 216.406705,134.42806 200.631158,159.562875 C184.855611,184.993394 170.514205,209.832505 147.854783,223.730579 C125.482189,237.924357 94.5047512,241.177098 68.9770479,230.827468 C43.7361727,220.477838 23.945032,196.230135 12.4719069,169.912505 C1.28560997,143.594875 -1.86949942,115.20732 0.998781848,86.2283565 C3.86706312,56.9536898 12.758735,27.0876156 31.9762195,12.5981341 C51.4805322,-1.89134747 81.5974855,-1.00423635 109.706642,1.36139328 C137.815798,4.02272662 163.63033,8.16257849 186.863408,22.0606526 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
