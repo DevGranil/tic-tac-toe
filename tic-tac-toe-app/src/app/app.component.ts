@@ -13,24 +13,24 @@ import { ActivePlayerComponent } from './components/game-panel/active-player/act
 import { WinnerComponent } from './components/winner/winner.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    GridComponent,
-    OverlayComponent,
-    GamePanelComponent,
-    AsyncPipe,
-    ActivePlayerComponent,
-    WinnerComponent
-],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    standalone: true,
+    imports: [
+        RouterOutlet,
+        GridComponent,
+        OverlayComponent,
+        GamePanelComponent,
+        AsyncPipe,
+        ActivePlayerComponent,
+        WinnerComponent
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  playersData$: Observable<PlayerState> = this.store.select(selectPlayersState)
-  winner$: Observable<PlayersConfig['winner']> = this.store.select(selectWinner)
+    playersData$: Observable<PlayerState> = this.store.select(selectPlayersState)
+    winner$: Observable<PlayersConfig['winner']> = this.store.select(selectWinner)
 
-  constructor(private store: Store<{[Keys.PLAYER_KEY]: PlayerState}>){
-  }
+    constructor(private store: Store<{[Keys.PLAYER_KEY]: PlayerState}>){
+    }
 }

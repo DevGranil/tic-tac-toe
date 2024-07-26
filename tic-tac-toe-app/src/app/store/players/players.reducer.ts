@@ -19,9 +19,9 @@ export const reducer = createReducer<PlayerState>(
     on(setWinner, (state, { payload }) => {
         if(!state) return state;
 
-        let scoreOb = {...state.scores}
-        let newScore = scoreOb[payload.winner] + 1
-        let newState = payload.winner !== Draw.DRAW ? {...state, winner : payload.winner, scores: { ...scoreOb, [payload.winner]: newScore } } : {...state, winner : payload.winner} 
+        const scoreOb = {...state.scores}
+        const newScore = scoreOb[payload.winner] + 1
+        const newState = payload.winner !== Draw.DRAW ? {...state, winner : payload.winner, scores: { ...scoreOb, [payload.winner]: newScore } } : {...state, winner : payload.winner} 
         return newState
     }),
     on(updatePlayers, (state, { payload }) => {
@@ -31,13 +31,13 @@ export const reducer = createReducer<PlayerState>(
     on(updateActive, (state, { payload }) => {
         if(!state) return state
 
-        let newState = {...state, active: payload}
+        const newState = {...state, active: payload}
         return newState
     }),
     on(resetWinner, (state) => {
         if(!state) return state;
 
-        let newState = {...state, winner: undefined, active: state.player_one}
+        const newState = {...state, winner: undefined, active: state.player_one}
         return newState
     }),
     on(endGame, () => {return null})

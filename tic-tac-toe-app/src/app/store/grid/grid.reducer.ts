@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { gridCalculate, gridReset, gridUpdate } from "./grid.actions";
+import { gridReset, gridUpdate } from "./grid.actions";
 
 export type GridAttr = Record<string, null | string>
 

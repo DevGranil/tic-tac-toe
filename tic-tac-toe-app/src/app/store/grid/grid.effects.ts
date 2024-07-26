@@ -1,7 +1,7 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { gridUpdate } from "./grid.actions";
-import { map, of, switchMap, tap, withLatestFrom } from "rxjs";
-import { GridActions, Keys } from "..";
+import { map, withLatestFrom } from "rxjs";
+import { Keys } from "..";
 import { Store } from "@ngrx/store";
 import { selectGrid } from "./grid.selectors";
 import { Injectable } from "@angular/core";
@@ -17,7 +17,7 @@ export enum Draw {
 @Injectable()
 export class GridEffects{
     calculateResult = createEffect(() =>
-         this.actions$.pipe(
+        this.actions$.pipe(
             ofType(gridUpdate),
             withLatestFrom(this.store.select(selectGrid)),
             withLatestFrom(this.store.select(selectPlayers)),
@@ -40,7 +40,7 @@ export class GridEffects{
 
              
             })     
-    ))
+        ))
 
     constructor(private actions$: Actions, private store: Store<{[Keys.GRID_KEY]: GridAttr, [Keys.PLAYER_KEY]: PlayerState}>){}
 
