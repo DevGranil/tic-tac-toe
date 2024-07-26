@@ -1,4 +1,4 @@
-# tic-tac-toe - Work in progress
+# Tic-tac-toe
 
 
 
@@ -18,4 +18,4 @@ To start enter the names for Player 1 and Player 2, then off you go.
      - ngrx v17
 
 
-View site -> https://devgranil.github.io/tic-tac-toe/
+Play game -> https://devgranil.github.io/tic-tac-toe/
