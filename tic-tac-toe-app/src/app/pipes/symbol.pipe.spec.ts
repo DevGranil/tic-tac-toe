@@ -1,10 +1,9 @@
 import { provideMockStore } from '@ngrx/store/testing';
 import { SymbolPipe } from './symbol.pipe';
 import { PlayerState } from '../store/players/players.reducer';
-import { ActionsSubject, ReducerManager, StateObservable, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { TestBed } from '@angular/core/testing';
 import { Keys } from '../store';
-import { of } from 'rxjs';
 
 
 
@@ -19,18 +18,18 @@ describe('SymbolPipe', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-          imports: [
+            imports: [
             // any modules needed
-          ],
-          providers: [
-            provideMockStore<PlayerState>({initialState: playerState, selectors: [{ selector: Keys.PLAYER_KEY, value: playerState}]}),
+            ],
+            providers: [
+                provideMockStore<PlayerState>({initialState: playerState, selectors: [{ selector: Keys.PLAYER_KEY, value: playerState}]}),
             // other providers
-          ],
+            ],
         });
      
         // store = TestBed.get<Store>(Store);
         // guard = TestBed.get<AuthGuard>(AuthGuard);
-      });
+    });
       
     it('create an instance', () => {
         const t: any = 't'

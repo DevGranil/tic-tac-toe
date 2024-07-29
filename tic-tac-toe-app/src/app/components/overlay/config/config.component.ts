@@ -1,8 +1,13 @@
 import { Component} from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { PlayerState } from '../../../store/players/players.reducer';
 import { updatePlayers } from '../../../store/players/players.actions';
+
+interface FormStruct {
+    player_one: FormControl<string | null>,
+    player_two: FormControl<string | null>
+}
 
 @Component({
     selector: 'app-config',
@@ -13,8 +18,9 @@ import { updatePlayers } from '../../../store/players/players.actions';
     templateUrl: './config.component.html',
     styleUrl: './config.component.scss'
 })
+
 export class ConfigComponent{
-    configForm: FormGroup = this.fb.group({
+    configForm: FormGroup<FormStruct> = this.fb.group({
         player_one: ['', Validators.required],
         player_two: ['', Validators.required]
     })
@@ -31,12 +37,12 @@ export class ConfigComponent{
         this.store.dispatch(updatePlayers({
             payload: {
                 players: {
-                    player_one: this.configForm.controls['player_one'].value,
-                    player_two: this.configForm.controls['player_two'].value,
-                    active: this.configForm.controls['player_one'].value,
+                    player_one: this.configForm.controls['player_one'].value ?? '',
+                    player_two: this.configForm.controls['player_two'].value ?? '',
+                    active: this.configForm.controls['player_one'].value ?? '',
                     scores: {
-                        [this.configForm.controls['player_one'].value]: 0,
-                        [this.configForm.controls['player_two'].value]: 0,
+                        [this.configForm.controls['player_one'].value ?? '']: 0,
+                        [this.configForm.controls['player_two'].value ?? '']: 0,
                     }
                 }
             }
